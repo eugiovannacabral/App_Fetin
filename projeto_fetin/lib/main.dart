@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'tema/app_tema.dart';
-import 'telas/splash/tela_splash.dart'; 
+import 'telas/splash/tela_splash.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_foreground_task/flutter_foreground_task.dart';
+import 'servicos/servico_monitoramento.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  FlutterForegroundTask.initCommunicationPort();
+  ServicoMonitoramento.configurar();
 
-  await SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.edgeToEdge,
-  );
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -40,5 +42,3 @@ class KeepCloseApp extends StatelessWidget {
     );
   }
 }
-
-
